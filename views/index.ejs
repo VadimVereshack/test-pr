@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Моя страница</title>
+</head>
+<body>
+    <input id="i1" type="text">
+    +
+    <input id="i2" type="text">
+    <button onclick="fun()">=</button>
+    <br>
+    <p id="result"></p>
+
+    <script>
+        function fun(){
+            const num1 = document.getElementById("i1").value;
+            const num2 = document.getElementById("i2").value;
+            fetch('/sum', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ num1, num2 })
+            })
+                .then(response => response.json())
+                .then(result => {
+                    document.getElementById("result").innerHTML = `Результат = ${result.result}`;
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                });
+         
+        }
+    </script>
+</body>
+</html>
