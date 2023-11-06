@@ -13,7 +13,7 @@ describe('POST /sum', () => {
       .send({ num1: 5, num2: 3 })
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body).to.have.property('result', 7);
+        expect(res.body).to.have.property('result', 77);
         done();
       });
   });
